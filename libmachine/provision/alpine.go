@@ -144,7 +144,8 @@ func (provisioner *AlpineProvisioner) Provision(swarmOptions swarm.Options, auth
 			else
 				sed -i '/^\\s*[^#].*main/{p;s/main/community/;}' /etc/apk/repositories;
 			fi
-		fi`); err != nil {
+		fi;
+		apk update`); err != nil {
 		return err
 	}
 
